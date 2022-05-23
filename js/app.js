@@ -97,7 +97,7 @@ function handleShowResults(){
   if(voteCount === 0){
     for(let i = 0; i < allProducts.length; i++){
       let liElem = document.createElement('li');
-      liElem.textContent = `${allProducts[i].name} was shown ${allProducts[i].views} times and voted for ${allProducts[i].votes} times.`;
+      liElem.textContent = `${allProducts[i].name} was shown ${allProducts[i].views} times and received ${allProducts[i].votes} votes.`;
       resultsList.appendChild(liElem);
     }
   }
