@@ -2,7 +2,7 @@
 
 // *********** GLOBAL VARIABLES ****************
 
-let voteCount = 25;
+let voteCount = 10;
 let allProducts = [];
 let products = [['bag','jpg'],['banana','jpg'],['bathroom','jpg'],['boots','jpg'],['breakfast','jpg'],['bubblegum','jpg'],['chair','jpg'],['cthulhu','jpg'],['dog-duck','jpg'],['dragon','jpg'],['pen','jpg'],['pet-sweep','jpg'],['scissors','jpg'],['shark','jpg'],['sweep','png'],['tauntaun','jpg'],['unicorn','jpg'],['water-can','jpg'],['wine-glass','jpg']];
 
@@ -77,7 +77,7 @@ function renderChart(){
   let productVotes =[];
   let productViews = [];
 
-  for(let i=0;i < allProducts.length;i++){
+  for(let i=0;i<allProducts.length;i++){
     productNames.push(allProducts[i].name);
     productVotes.push(allProducts[i].votes);
     productViews.push(allProducts[i].views);
@@ -149,35 +149,31 @@ function handleClick(event) {
 
   let imgClicked = event.target.alt;
 
-  for(let i = 0; i < allProducts.length; i++){
-    if(imgClicked === allProducts[i].name){
+  for(let i=0;i<allProducts.length;i++){
+    if(imgClicked===allProducts[i].name){
       allProducts[i].votes++;
     }
   }
-  //rerender 2 new Product images
   renderImgs();
 
   // once voting rounds completed - stop clicks
   if(voteCount === 0){
     imgContainer.removeEventListener('click', handleClick);
+    renderChart();
   }
-
 }
 
-function handleShowResults(){
-
-  renderChart();
-
-  // if(voteCount === 0){
-  //   for(let i = 0; i < allProducts.length; i++){
-  //     let liElem = document.createElement('li');
-  //     liElem.textContent = `${allProducts[i].name} was shown ${allProducts[i].views} times and received ${allProducts[i].votes} votes.`;
-  //     resultsList.appendChild(liElem);
-  //   }
-  // }
-}
+// function handleShowResults(){
+//   if(voteCount === 0){
+//     for(let i = 0; i < allProducts.length; i++){
+//       let liElem = document.createElement('li');
+//       liElem.textContent = `${allProducts[i].name} was shown ${allProducts[i].views} times and received ${allProducts[i].votes} votes.`;
+//       resultsList.appendChild(liElem);
+//     }
+//   }
+// }
 
 // ********* EVENT LISTENERS ******************
 
 imgContainer.addEventListener('click', handleClick);
-showResultsBtn.addEventListener('click', handleShowResults);
+// showResultsBtn.addEventListener('click', handleShowResults);
