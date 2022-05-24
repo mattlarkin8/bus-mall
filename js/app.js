@@ -12,8 +12,8 @@ let imgContainer = document.getElementById('img-container');
 let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
-let showResultsBtn = document.getElementById('show-results-btn');
-let resultsList = document.getElementById('results-list');
+// let showResultsBtn = document.getElementById('show-results-btn');
+// let resultsList = document.getElementById('results-list');
 
 // ************ CANVAS REFERENCE ****************
 let ctx = document.getElementById('my-chart').getContext('2d');
