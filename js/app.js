@@ -29,8 +29,21 @@ function Product(name,fileExtension){
   allProducts.push(this);
 }
 
-// ********** HELPER FUNCTIONS/EXECUTABLE CODE ********
+// ******** USE DATA FROM LOCAL STORAGE *********
 
+// pull data from storage
+let retrievedProducts = localStorage.getItem('products');
+// parse data back to usable code
+let parsedProducts = JSON.parse(retrievedProducts);
+
+// use the data from local storage
+if(retrievedProducts){
+  allProducts=parsedProducts;
+}else{
+  instantiateProducts();
+}
+
+// ********** HELPER FUNCTIONS/EXECUTABLE CODE ********
 function instantiateProducts(){
   for(let i=0;i<products.length;i++){
     new Product(`${products[i][0]}`,`${products[i][1]}`);
@@ -67,8 +80,9 @@ function renderImgs(){
   imgThree.alt = allProducts[productThreeIndex].name;
   allProducts[productThreeIndex].views++;
 }
-
-instantiateProducts();
+// instantiate products using constructor function
+//instantiateProducts();
+// render random images to page
 renderImgs();
 
 // *********** RENDER CHART ****************
@@ -159,6 +173,11 @@ function handleClick(event) {
   // once voting rounds completed - stop clicks
   if(voteCount === 0){
     imgContainer.removeEventListener('click', handleClick);
+
+    // Stringify and add allProducts array to local storage
+    let stringifiedProducts = JSON.stringify(allProducts);
+    localStorage.setItem('products',stringifiedProducts);
+
     renderChart();
   }
 }
