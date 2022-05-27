@@ -12,8 +12,6 @@ let imgContainer = document.getElementById('img-container');
 let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
-// let showResultsBtn = document.getElementById('show-results-btn');
-// let resultsList = document.getElementById('results-list');
 
 // ************ CANVAS REFERENCE ****************
 let ctx = document.getElementById('my-chart').getContext('2d');
@@ -80,8 +78,6 @@ function renderImgs(){
   imgThree.alt = allProducts[productThreeIndex].name;
   allProducts[productThreeIndex].views++;
 }
-// instantiate products using constructor function
-//instantiateProducts();
 // render random images to page
 renderImgs();
 
@@ -182,17 +178,6 @@ function handleClick(event) {
   }
 }
 
-// function handleShowResults(){
-//   if(voteCount === 0){
-//     for(let i = 0; i < allProducts.length; i++){
-//       let liElem = document.createElement('li');
-//       liElem.textContent = `${allProducts[i].name} was shown ${allProducts[i].views} times and received ${allProducts[i].votes} votes.`;
-//       resultsList.appendChild(liElem);
-//     }
-//   }
-// }
-
 // ********* EVENT LISTENERS ******************
 
 imgContainer.addEventListener('click', handleClick);
-// showResultsBtn.addEventListener('click', handleShowResults);
